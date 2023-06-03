@@ -7,6 +7,7 @@
     @foreach (var value in CostsList)
     {
         <li><span class="txtBold">@value.Expense</span> - @value.Cost</li>
+        <li><TaxCard Name="@value.Expense" Cost="@value.Cost"></TaxCard></li>
     }
 </ul>
 
