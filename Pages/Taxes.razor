@@ -1,9 +1,26 @@
 ﻿@page "/taxes"
+<p>@message</p>
 
 <h3>Taxes</h3>
+<ModalForm OnClickEvent="Msg"></ModalForm>
 
-<TaxCard></TaxCard>
+@if(CostsList.Count > 0)
+{
+    @foreach(var cost in CostsList)
+    {
+        <p>@cost.Expense</p>
+    }
+}
+
 
 @code {
+    public List<Expenses> CostsList = new();
 
+    public string message = "hola";
+    private void Msg()
+    {
+        message = "Hola desde otro sitio";
+    }
+
+    
 }

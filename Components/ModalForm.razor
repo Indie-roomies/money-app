@@ -1,0 +1,59 @@
+﻿
+
+<MatButton Style="text-transform: capitalize;" Raised="true" Icon="library_add" OnClick="@(() => OpenModal())">Add Expense</MatButton>
+
+
+
+<MatDialog @bind-IsOpen="@modalOpen">
+    <MatDialogContent>
+        <div class="circle">
+            <img src="/Images/mujer.jpg" alt="Imagen" />
+        </div>
+        <div class="form">
+            <MatTextField @bind-Value="@expense"  Label="Expense" />
+            <MatTextField  @bind-Value="@cost" Label="Cost" />
+        </div>
+    </MatDialogContent>
+    <MatDialogActions>
+        <MatButton OnClick="Close">Save</MatButton>
+        <MatButton OnClick="@(() => CloseModal())">Close</MatButton>
+    </MatDialogActions>
+</MatDialog>
+@code {
+
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClickEvent { get; set; }
+
+
+
+
+    private decimal sumCosts = 0;
+    string? expense;
+    string? cost;
+    string? trimCost;
+
+    private bool modalOpen = false;
+
+
+
+    void OpenModal() => modalOpen = true;
+
+    void CloseModal()
+    {
+        modalOpen = false;
+        expense = string.Empty;
+        cost = string.Empty;
+        trimCost = string.Empty;
+    }
+
+    private async Task Close()
+    {
+
+        await OnClickEvent.InvokeAsync();
+        modalOpen = false;
+    }
+
+    
+
+}
