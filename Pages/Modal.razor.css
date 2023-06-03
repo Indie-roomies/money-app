@@ -1,7 +1,11 @@
 ﻿
+.modal{
+    min-width: 400px;
+}
+
 .modal-wrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
     height: 100%;
@@ -12,22 +16,29 @@
     height: 200px;
     border-radius: 50%;
     overflow: hidden;
-    margin: 0 auto;
-    margin-bottom: 20px;
+    margin: 50px auto;
+    
     
 }
 
-    .circle img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+.circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 .form {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    height: 130px;
+    width: 300px;
+}
+
+.mat-text-field {
+    width: 300px;
 }
 
 .button-wrapper {
@@ -36,8 +47,17 @@
     align-items: center;
 }
 
-    .button-wrapper button {
-        margin-bottom: 10px;
-    }
+.button-wrapper button {
+    margin-bottom: 10px;
+}
 
+.costListItem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
+.txtBold{
+    font-weight: bolder;
+}

@@ -1,25 +1,23 @@
 ﻿@page "/modal"
 @inject ILogger<Modal> logger
 
-<MatButton OnClick="@(() => OpenModal())">Open Modal</MatButton>
+<MatButton Style="text-transform: capitalize;" Raised="true" Icon="library_add" OnClick="@(() => OpenModal())">Add Expense</MatButton>
 
-<ul>
+<ul class="costListItem">
     @foreach (var value in CostsList)
     {
-        <li>@value.Expense - @value.Cost</li>
+        <li><span class="txtBold">@value.Expense</span> - @value.Cost</li>
     }
 </ul>
 
-<p>The total sum of the expenses costs is: @sumCosts</p>
+<p class="totalText">The total sum of the expenses costs is: <span class="txtBold">@sumCosts</span> </p>
 
-<MatDialog @bind-IsOpen="@modalOpen">
+<MatDialog  @bind-IsOpen="@modalOpen">
     <MatDialogContent>
         <div class="circle">
-            <!-- Aquí puedes agregar la imagen -->
             <img src="/Images/mujer.jpg" alt="Imagen" />
         </div>
         <div class="form">
-            <!-- Aquí puedes agregar el formulario -->
             <MatTextField @bind-Value="@expense" Label="Expense" />
             <MatTextField @bind-Value="@cost" Label="Cost" />
         </div>
@@ -38,7 +36,7 @@
     private bool modalOpen = false;
     string? expense;
     string? cost;
-    string trimCost;
+    string? trimCost;
 
     void OpenModal() => modalOpen = true;
 
@@ -67,7 +65,7 @@
             }
         }
 
-        var newExpense = new Expenses
+        Expenses newExpense = new Expenses()
             {
                 Expense = expense,
                 Cost = trimCost
