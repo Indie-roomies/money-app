@@ -1,0 +1,90 @@
+﻿@page "/modal"
+@inject ILogger<Modal> logger
+
+<MatButton OnClick="@(() => OpenModal())">Open Modal</MatButton>
+
+<ul>
+    @foreach (var value in CostsList)
+    {
+        <li>@value.Expense - @value.Cost</li>
+    }
+</ul>
+
+<p>The total sum of the expenses costs is: @sumCosts</p>
+
+<MatDialog @bind-IsOpen="@modalOpen">
+    <MatDialogContent>
+        <div class="circle">
+            <!-- Aquí puedes agregar la imagen -->
+            <img src="/Images/mujer.jpg" alt="Imagen" />
+        </div>
+        <div class="form">
+            <!-- Aquí puedes agregar el formulario -->
+            <MatTextField @bind-Value="@expense" Label="Expense" />
+            <MatTextField @bind-Value="@cost" Label="Cost" />
+        </div>
+    </MatDialogContent>
+    <MatDialogActions>
+        <MatButton OnClick="@(() => GuardarGasto())">Save</MatButton>
+        <MatButton OnClick="@(() => CloseModal())">Close</MatButton>
+    </MatDialogActions>
+</MatDialog>
+
+
+
+@code {
+    private List<Expenses> CostsList = new List<Expenses>();
+    private decimal sumCosts = 0;
+    private bool modalOpen = false;
+    string? expense;
+    string? cost;
+    string trimCost;
+
+    void OpenModal() => modalOpen = true;
+
+    void CloseModal()
+    {
+        modalOpen = false;
+        expense = string.Empty;
+        cost = string.Empty;
+        trimCost = string.Empty;
+    }
+
+
+    private void GuardarGasto()
+    {
+
+
+        foreach (char c in cost)
+        {
+            if (c != '.')
+            {
+                trimCost += c;
+            } 
+            else if (c == '.')
+            {
+                trimCost += ',';
+            }
+        }
+
+        var newExpense = new Expenses
+            {
+                Expense = expense,
+                Cost = trimCost
+            };
+
+        CostsList.Add(newExpense);
+        sumCosts = CostsList.Sum(t => decimal.Parse(t.Cost));
+
+
+        CloseModal();
+    }
+}
+
+
+
+
+
+
+
+
