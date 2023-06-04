@@ -1,6 +1,6 @@
 ﻿
 
-<MatButton Style="text-transform: capitalize;" Raised="true" Icon="library_add" OnClick="@(() => OpenModal())">Add Expense</MatButton>
+<MatButton Style="text-transform: capitalize; margin:auto;" Raised="true" Icon="library_add" OnClick="@(() => OpenModal())">Add Expense</MatButton>
 
 
 
@@ -28,6 +28,7 @@
 
 
 
+
     //private decimal sumCosts = 0;
     string expense = String.Empty;
     string cost = String.Empty;
@@ -49,6 +50,7 @@
 
     private async Task Close()
     {
+
         if (cost == String.Empty) cost = "0";
         foreach (char c in cost)
         {

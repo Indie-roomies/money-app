@@ -1,7 +1,13 @@
 ﻿@page "/taxes"
-
+@inject IMatDialogService dialog
 <h3>Taxes</h3>
-<ModalForm OnClickEvent="Msg"></ModalForm>
+<div class="container w-75 mx-auto">
+    <MatTextField Label="Ingreso" @bind-Value="@Total" Outlined="true"></MatTextField>   
+
+    <MatTextField Label="Restante" @bind-Value="@Left" Outlined="true" Disabled="true"></MatTextField>
+
+    <ModalForm OnClickEvent="Add"></ModalForm>
+</div>
 
 
 @if(CostsList.Count > 0)
@@ -15,9 +21,22 @@
 @code {
     public List<Expenses> CostsList = new();
 
-    private void Msg(Expenses tax)
+    private decimal Total = 0;
+
+    private decimal Left = 0;
+
+    private async Task Add(Expenses tax)
     {
-        CostsList.Add(tax);
+        if(Total == 0)
+        {
+
+            await dialog.AlertAsync("Debes ingresar un ingreso total");
+        }
+        else
+        {
+            
+            CostsList.Add(tax);
+        }
     }
 
     private void Delete(int IdTax)
