@@ -17,9 +17,9 @@
     public List<Expenses> CostsList = new();
 
     public string message = "hola";
-    private void Msg()
+    private void Msg(Expenses tax)
     {
-        message = "Hola desde otro sitio";
+        CostsList.Add(tax);
     }
 
     

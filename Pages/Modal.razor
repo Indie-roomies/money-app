@@ -35,9 +35,9 @@
     private List<Expenses> CostsList = new List<Expenses>();
     private decimal sumCosts = 0;
     private bool modalOpen = false;
-    string? expense;
-    string? cost;
-    string? trimCost;
+    string expense = String.Empty;
+    string cost = String.Empty;
+    string trimCost = String.Empty;
 
     void OpenModal() => modalOpen = true;
 
@@ -73,7 +73,7 @@
             };
 
         CostsList.Add(newExpense);
-        sumCosts = CostsList.Sum(t => decimal.Parse(t.Cost));
+        //sumCosts = CostsList.Sum(t => decimal.Parse(t.Cost));
 
 
         CloseModal();

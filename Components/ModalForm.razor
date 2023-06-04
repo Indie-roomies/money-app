@@ -23,15 +23,15 @@
 
 
     [Parameter]
-    public EventCallback<MouseEventArgs> OnClickEvent { get; set; }
+    public EventCallback<Expenses> OnClickEvent { get; set; }
 
 
 
 
-    private decimal sumCosts = 0;
-    string? expense;
-    string? cost;
-    string? trimCost;
+    //private decimal sumCosts = 0;
+    string expense = String.Empty;
+    string cost = String.Empty;
+    string trimCost = String.Empty;
 
     private bool modalOpen = false;
 
@@ -49,9 +49,21 @@
 
     private async Task Close()
     {
-
-        await OnClickEvent.InvokeAsync();
-        modalOpen = false;
+        if (cost == String.Empty) cost = "0";
+        foreach (char c in cost)
+        {
+            if (c != '.')
+            {
+                trimCost += c;
+            }
+            else if (c == '.')
+            {
+                trimCost += ',';
+            }
+        }
+        var Tax = new Expenses() { Expense = expense, Cost = trimCost };
+        await OnClickEvent.InvokeAsync(Tax);
+        CloseModal();
     }
 
     
