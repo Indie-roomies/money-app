@@ -1,25 +1,40 @@
 ﻿@page "/taxes"
-<p>@message</p>
 
 <h3>Taxes</h3>
 <ModalForm OnClickEvent="Msg"></ModalForm>
+
+<MatCard>
+    <MatCardContent>
+        <div class="d-flex justify-content-between p-3 w-75">
+               <div>Hola</div>
+               <div>Nop</div>
+               <MatCardActionButtons Class="w-25">
+                   <MatButton>Delete</MatButton>
+               </MatCardActionButtons>
+        </div>
+    </MatCardContent>
+</MatCard>
 
 @if(CostsList.Count > 0)
 {
     @foreach(var cost in CostsList)
     {
-        <p>@cost.Expense</p>
+        <TaxCard Name="@cost.Expense" Cost="@cost.Cost" Id="cost.Id" EventDelete="Delete"></TaxCard>
     }
 }
-
 
 @code {
     public List<Expenses> CostsList = new();
 
-    public string message = "hola";
     private void Msg(Expenses tax)
     {
         CostsList.Add(tax);
+    }
+
+    private void Delete(int IdTax)
+    {
+        var tax = CostsList.Where(c => c.Id == IdTax);
+        CostsList.Remove(tax.First());
     }
 
     

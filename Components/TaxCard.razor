@@ -1,11 +1,15 @@
 ﻿
-
-<div>
-    <div class="cardTax">
-         <p>@Name</p>
-         <p>@Cost</p>
-    </div>
-</div>
+<MatCard>
+    <MatCardContent>
+        <div class="d-flex justify-content-between p-3 w-75">
+            <div>@Name</div>
+            <div>@Cost</div>
+            <MatCardActionButtons Class="w-25">
+                <MatButton OnClick="Delete">Delete</MatButton>
+            </MatCardActionButtons>
+        </div>
+    </MatCardContent>
+</MatCard>
 @code {
     [Parameter]
 
@@ -14,4 +18,16 @@
     [Parameter]
 
     public string? Cost { get; set; }
+
+    [Parameter]
+    public int Id { get; set; }
+
+    [Parameter]
+    public EventCallback<int> EventDelete { get; set; }
+
+    private async Task Delete()
+    {
+        await EventDelete.InvokeAsync(Id);
+    }
+
 }

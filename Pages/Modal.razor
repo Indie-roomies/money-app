@@ -39,6 +39,8 @@
     string cost = String.Empty;
     string trimCost = String.Empty;
 
+
+    int CalculatedId = 1;
     void OpenModal() => modalOpen = true;
 
     void CloseModal()
@@ -68,10 +70,11 @@
 
         Expenses newExpense = new Expenses()
             {
+                Id= CalculatedId,
                 Expense = expense,
                 Cost = trimCost
             };
-
+        CalculatedId++;
         CostsList.Add(newExpense);
         //sumCosts = CostsList.Sum(t => decimal.Parse(t.Cost));
 
