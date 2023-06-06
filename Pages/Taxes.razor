@@ -33,11 +33,14 @@
     {
         CostsList.Add(tax);
         TotalCosts = CostsList.Sum(c => c.Cost);
+        Left = Total - TotalCosts;
     }
 
     private void Delete(int IdTax)
     {
         var tax = CostsList.Where(c => c.Id == IdTax);
+        TotalCosts = TotalCosts - tax.First().Cost;
+        Left = Left + tax.First().Cost;
         CostsList.Remove(tax.First());
     }
 
