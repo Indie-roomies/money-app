@@ -4,6 +4,6 @@
     {
         public int Id { get; set; }
         public string? Expense { get; set; }
-        public string? Cost { get; set; }
+        public decimal Cost { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿
+﻿@inject IMatDialogService dialog
 
 <MatButton Style="text-transform: capitalize; margin:auto;" Raised="true" Icon="library_add" OnClick="@(() => OpenModal())">Add Expense</MatButton>
 
@@ -15,7 +15,7 @@
         </div>
     </MatDialogContent>
     <MatDialogActions>
-        <MatButton OnClick="Close">Save</MatButton>
+        <MatButton OnClick="Save">Save</MatButton>
         <MatButton OnClick="@(() => CloseModal())">Close</MatButton>
     </MatDialogActions>
 </MatDialog>
@@ -26,12 +26,14 @@
     public EventCallback<Expenses> OnClickEvent { get; set; }
 
 
+    [Parameter]
+    public decimal Total { get; set; }
 
 
 
     //private decimal sumCosts = 0;
     string expense = String.Empty;
-    string cost = String.Empty;
+    decimal cost = 0;
     string trimCost = String.Empty;
 
     private bool modalOpen = false;
@@ -44,28 +46,25 @@
     {
         modalOpen = false;
         expense = string.Empty;
-        cost = string.Empty;
+        cost = 0;
         trimCost = string.Empty;
     }
 
-    private async Task Close()
+    private async Task Save()
     {
-
-        if (cost == String.Empty) cost = "0";
-        foreach (char c in cost)
+           // Validating total
+        if( Total == 0)
         {
-            if (c != '.')
-            {
-                trimCost += c;
-            }
-            else if (c == '.')
-            {
-                trimCost += ',';
-            }
+            await dialog.AlertAsync("Debes ingresar un valor total");
+            CloseModal();
         }
-        var Tax = new Expenses() { Expense = expense, Cost = trimCost };
-        await OnClickEvent.InvokeAsync(Tax);
-        CloseModal();
+        else
+        {
+            var Tax = new Expenses() { Expense = expense, Cost = cost };
+            await OnClickEvent.InvokeAsync(Tax);
+            CloseModal();
+        }
+
     }
 
     

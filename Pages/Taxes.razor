@@ -6,7 +6,7 @@
 
     <MatTextField Label="Restante" @bind-Value="@Left" Outlined="true" Disabled="true"></MatTextField>
 
-    <ModalForm OnClickEvent="Add"></ModalForm>
+    <ModalForm OnClickEvent="Add" Total="Total"></ModalForm>
 </div>
 
 
@@ -25,18 +25,10 @@
 
     private decimal Left = 0;
 
-    private async Task Add(Expenses tax)
+    private void Add(Expenses tax)
     {
-        if(Total == 0)
-        {
+          CostsList.Add(tax);
 
-            await dialog.AlertAsync("Debes ingresar un ingreso total");
-        }
-        else
-        {
-            
-            CostsList.Add(tax);
-        }
     }
 
     private void Delete(int IdTax)
