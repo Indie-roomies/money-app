@@ -6,6 +6,8 @@
 
     <MatTextField Label="Restante" @bind-Value="@Left" Outlined="true" Disabled="true"></MatTextField>
 
+    <MatTextField Label="Total Costs" @bind-Value="@TotalCosts" Icon="money"></MatTextField>
+
     <ModalForm OnClickEvent="Add" Total="Total"></ModalForm>
 </div>
 
@@ -25,10 +27,12 @@
 
     private decimal Left = 0;
 
+    private decimal TotalCosts = 0;
+
     private void Add(Expenses tax)
     {
-          CostsList.Add(tax);
-
+        CostsList.Add(tax);
+        TotalCosts = CostsList.Sum(c => c.Cost);
     }
 
     private void Delete(int IdTax)
