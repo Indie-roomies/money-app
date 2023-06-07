@@ -16,7 +16,7 @@
 {
     @foreach(var cost in CostsList)
     {
-        <TaxCard Name="@cost.Expense" Cost="@cost.Cost" Id="cost.Id" EventDelete="Delete"></TaxCard>
+        <TaxCard Name="@cost.Expense" Cost="@cost.Cost" Id="cost.Id" DestroyEvent="Delete"></TaxCard>
     }
 }
 

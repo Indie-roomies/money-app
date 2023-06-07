@@ -6,6 +6,7 @@
             <div>@Cost</div>
             <MatCardActionButtons Class="w-25">
                 <MatButton OnClick="Delete">Delete</MatButton>
+                <MatButton> Edit</MatButton>
             </MatCardActionButtons>
         </div>
     </MatCardContent>
@@ -23,11 +24,19 @@
     public int Id { get; set; }
 
     [Parameter]
-    public EventCallback<int> EventDelete { get; set; }
+    public EventCallback<int> DestroyEvent { get; set; }
+
+    [Parameter]
+    public EventCallback<Expenses> UpdateEvent { get; set; }
 
     private async Task Delete()
     {
-        await EventDelete.InvokeAsync(Id);
+        await DestroyEvent.InvokeAsync(Id);
+    }
+
+    private void Update()
+    {
+        
     }
 
 }
