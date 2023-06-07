@@ -6,7 +6,7 @@
             <div>@Cost</div>
             <MatCardActionButtons Class="w-25">
                 <MatButton OnClick="Delete">Delete</MatButton>
-                <MatButton> Edit</MatButton>
+                <MatButton OnClick="Update"> Edit</MatButton>
             </MatCardActionButtons>
         </div>
     </MatCardContent>
@@ -34,9 +34,9 @@
         await DestroyEvent.InvokeAsync(Id);
     }
 
-    private void Update()
+    private async Task Update()
     {
-        
+        await UpdateEvent.InvokeAsync(new Expenses { Id = Id, Cost = Cost, Expense = Name });
     }
 
 }

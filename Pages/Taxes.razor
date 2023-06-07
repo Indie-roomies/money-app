@@ -44,5 +44,17 @@
         CostsList.Remove(tax.First());
     }
 
-    
+    private void Edit(Expenses TaxEdit)
+    {
+        var taxedit = CostsList.FirstOrDefault(c => c.Id == TaxEdit.Id);
+        if(taxedit != null)
+        {
+            taxedit.Cost = TaxEdit.Cost;            
+        }
+
+
+        
+
+    }
+
 }
