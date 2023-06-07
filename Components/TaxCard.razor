@@ -1,42 +1,48 @@
 ﻿
+
+
 <MatCard>
+
     <MatCardContent>
         <div class="d-flex justify-content-between p-3 w-75">
-            <div>@Name</div>
-            <div>@Cost</div>
+            <div>@ModelTax.Expense</div>
+            <div>@ModelTax.Cost"</div>
             <MatCardActionButtons Class="w-25">
                 <MatButton OnClick="Delete">Delete</MatButton>
                 <MatButton OnClick="Update"> Edit</MatButton>
             </MatCardActionButtons>
         </div>
     </MatCardContent>
+
+
 </MatCard>
 @code {
-    [Parameter]
 
-    public string? Name { get; set; }
-
-    [Parameter]
-
-    public decimal Cost { get; set; }
-
-    [Parameter]
-    public int Id { get; set; }
-
+    [Parameter, EditorRequired]
+    public Expenses ModelTax { get; set; }
     [Parameter]
     public EventCallback<int> DestroyEvent { get; set; }
 
     [Parameter]
     public EventCallback<Expenses> UpdateEvent { get; set; }
 
+    private Expenses tax = new();
+
+    protected override void OnInitialized()
+    {
+        tax.Id = ModelTax.Id;
+        tax.Expense = ModelTax.Expense;
+        tax.Cost = ModelTax.Cost;
+    }
+
     private async Task Delete()
     {
-        await DestroyEvent.InvokeAsync(Id);
+        await DestroyEvent.InvokeAsync(ModelTax.Id);
     }
 
     private async Task Update()
     {
-        await UpdateEvent.InvokeAsync(new Expenses { Id = Id, Cost = Cost, Expense = Name });
+        await UpdateEvent.InvokeAsync(new Expenses { Id = ModelTax.Id, Cost = ModelTax.Cost, Expense = ModelTax.Expense });
     }
 
 }
