@@ -6,7 +6,7 @@
     <MatCardContent>
         <div class="d-flex justify-content-between p-3 w-75">
             <div>@ModelTax.Expense</div>
-            <div>@ModelTax.Cost"</div>
+            <MatTextField @bind-Value="@ModelTax.Cost" Disabled="true" Label="Cost"></MatTextField>
             <MatCardActionButtons Class="w-25">
                 <MatButton OnClick="Delete">Delete</MatButton>
                 <MatButton OnClick="Update"> Edit</MatButton>
