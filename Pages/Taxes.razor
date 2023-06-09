@@ -29,11 +29,16 @@
 
     private decimal TotalCosts = 0;
 
+    private void CalculateTotal(decimal total,decimal totalcosts)
+    {
+        Left = total - totalcosts;
+    }
+
     private void Add(Expenses tax)
     {
         CostsList.Add(tax);
         TotalCosts = CostsList.Sum(c => c.Cost);
-        Left = Total - TotalCosts;
+        CalculateTotal(Total, TotalCosts);
     }
 
     private void Delete(int IdTax)
@@ -49,7 +54,10 @@
         var taxedit = CostsList.FirstOrDefault(c => c.Id == TaxEdit.Id);
         if(taxedit != null)
         {
-            taxedit.Cost = TaxEdit.Cost;            
+            var index = CostsList.IndexOf(taxedit);
+            CostsList[index] = TaxEdit;
+            TotalCosts = CostsList.Sum(c => c.Cost);
+            CalculateTotal(Total, TotalCosts);
         }
 
 
