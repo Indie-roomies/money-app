@@ -6,10 +6,15 @@
     <MatCardContent>
         <div class="d-flex justify-content-between p-3 w-75">
             <div>@ModelTax.Expense</div>
-            <MatTextField @bind-Value="@ModelTax.Cost" Disabled="true" Label="Cost"></MatTextField>
+            <MatTextField @bind-Value="@ModelTax.Cost" Disabled="@Disabled" Label="Cost"></MatTextField>
             <MatCardActionButtons Class="w-25">
                 <MatButton OnClick="Delete">Delete</MatButton>
-                <MatButton OnClick="Update"> Edit</MatButton>
+                <MatButton OnClick="AcceptEdit">Edit</MatButton>
+                @if(Disabled == false)
+                {
+
+                    <MatButton OnClick="Update">Save Edit</MatButton>
+                }
             </MatCardActionButtons>
         </div>
     </MatCardContent>
@@ -26,6 +31,8 @@
     [Parameter]
     public EventCallback<Expenses> UpdateEvent { get; set; }
 
+    public bool Disabled = true;
+
     private Expenses tax = new();
 
     protected override void OnInitialized()
@@ -34,7 +41,10 @@
         tax.Expense = ModelTax.Expense;
         tax.Cost = ModelTax.Cost;
     }
-
+    private void AcceptEdit()
+    {
+        Disabled = false;
+    }
     private async Task Delete()
     {
         await DestroyEvent.InvokeAsync(ModelTax.Id);
@@ -42,6 +52,7 @@
 
     private async Task Update()
     {
+        Disabled = true;
         await UpdateEvent.InvokeAsync(new Expenses { Id = ModelTax.Id, Cost = ModelTax.Cost, Expense = ModelTax.Expense });
     }
 
