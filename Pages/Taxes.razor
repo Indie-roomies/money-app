@@ -16,7 +16,7 @@
 {
     @foreach(var cost in CostsList)
     {
-        <TaxCard ModelTax="@cost" DestroyEvent="Delete"></TaxCard>
+        <TaxCard ModelTax="@cost" DestroyEvent="Delete" UpdateEvent="Edit"></TaxCard>
     }
 }
 
@@ -54,8 +54,7 @@
         var taxedit = CostsList.FirstOrDefault(c => c.Id == TaxEdit.Id);
         if(taxedit != null)
         {
-            var index = CostsList.IndexOf(taxedit);
-            CostsList[index] = TaxEdit;
+            taxedit.Cost = TaxEdit.Cost;
             TotalCosts = CostsList.Sum(c => c.Cost);
             CalculateTotal(Total, TotalCosts);
         }
