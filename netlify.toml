@@ -1,5 +1,5 @@
 ﻿
-
+# ./netlify.toml
 
 [[redirects]]
   from = "/*"
