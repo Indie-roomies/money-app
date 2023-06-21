@@ -1,6 +1,4 @@
-﻿[build]
-  command = "dotnet publish -c Release"
-  publish = "bin/Release/net7.0/publish/wwwroot"
+﻿
 
 
 [[redirects]]
