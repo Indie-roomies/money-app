@@ -1,10 +1,20 @@
 ﻿@page "/tareas"
 
-<h3>Task</h3>
-
 <MatHeadline1>
-    <p>Tareas</p>
+    Tasks
 </MatHeadline1>
-@code {
+<input placeholder="Something todo" />
+<input placeholder="Description"/>
+<button>Add todo</button>
 
+<div>
+    <ul>
+        @foreach(var task in taks)
+        {
+            <li>@task.Name</li>
+        }
+    </ul>
+</div>
+@code {
+    public List<TaskModel> taks = new();
 }
