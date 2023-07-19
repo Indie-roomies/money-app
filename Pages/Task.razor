@@ -3,18 +3,38 @@
 <MatHeadline1>
     Tasks
 </MatHeadline1>
-<input placeholder="Something todo" />
-<input placeholder="Description"/>
-<button>Add todo</button>
+<EditForm Model="@_task" OnSubmit="@Add">
+    <InputText @bind-Value="_task.Name"/>
+    <InputText @bind-Value="_task.Description" />
+    <InputCheckbox @bind-Value="_task.Completed"></InputCheckbox>
+    <button type="submit">Submit</button>
+</EditForm>
+
 
 <div>
-    <ul>
-        @foreach(var task in taks)
-        {
-            <li>@task.Name</li>
-        }
-    </ul>
+    @if(taks.Count > 0)
+    {
+        <ul>
+            @foreach (var task in taks)
+            {
+                <li>@task.Name</li>
+                <li>
+                    <input type="checkbox" @bind="task.Completed" />
+                    <input @bind="task.Name" />
+                </li>
+            }
+        </ul>
+    }
+
 </div>
 @code {
-    public List<TaskModel> taks = new();
+    private List<TaskModel> taks = new();
+    private TaskModel _task= new();
+    public void Add()
+    {
+
+        taks.Add(_task);
+
+
+    }
 }
