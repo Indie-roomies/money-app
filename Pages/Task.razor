@@ -3,16 +3,17 @@
 <MatHeadline1>
     Tasks
 </MatHeadline1>
-<EditForm Model="@_task" OnSubmit="@Add">
-    <InputText @bind-Value="_task.Name"/>
-    <InputText @bind-Value="_task.Description" />
-    <InputCheckbox @bind-Value="_task.Completed"></InputCheckbox>
-    <button type="submit">Submit</button>
-</EditForm>
+<div>
+    <InputText @bind-Value="NameTask"/>
+    <InputText @bind-Value="DescTask" />
+    <InputCheckbox @bind-Value="State"></InputCheckbox>
+    <button type="submit" @onclick="Add">Submit</button>
+</div>
+
 
 
 <div>
-    @if(taks.Count > 0)
+    @if (taks.Count > 0)
     {
         <ul>
             @foreach (var task in taks)
@@ -29,12 +30,18 @@
 </div>
 @code {
     private List<TaskModel> taks = new();
-    private TaskModel _task= new();
-    public void Add()
-    {
+
+    public string NameTask = String.Empty;
+    public string DescTask = String.Empty;
+    public bool State = false;
+    public void Add(){
+        var _task = new TaskModel{ Name = NameTask, Description=DescTask, Completed = State};
+
+
 
         taks.Add(_task);
 
+   
 
     }
 }
