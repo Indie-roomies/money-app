@@ -40,4 +40,5 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         branch: gh-pages
+        repository-name: Indie-roomies/money-app.github.io
         folder: release/wwwroot
