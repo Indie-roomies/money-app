@@ -40,4 +40,4 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         branch: gh-pages
-        target-folder: release/wwwroot
+        folder: release/wwwroot
