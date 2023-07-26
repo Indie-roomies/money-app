@@ -1,0 +1,221 @@
+/* /Components/ModalForm.razor.rz.scp.css */
+.modal[b-vlbt19tti5] {
+    min-width: 400px;
+}
+
+.modal-wrapper[b-vlbt19tti5] {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.circle[b-vlbt19tti5] {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 50px auto;
+}
+
+    .circle img[b-vlbt19tti5] {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.form[b-vlbt19tti5] {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    height: 130px;
+    width: 300px;
+}
+
+.mat-text-field[b-vlbt19tti5] {
+    width: 300px;
+}
+
+.button-wrapper[b-vlbt19tti5] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .button-wrapper button[b-vlbt19tti5] {
+        margin-bottom: 10px;
+    }
+
+.costListItem[b-vlbt19tti5] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.txtBold[b-vlbt19tti5] {
+    font-weight: bolder;
+}
+/* /Components/TaxCard.razor.rz.scp.css */
+.cardTax[b-kyrdfrvyf7]{
+    width:100%;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+}
+/* /Pages/Index.razor.rz.scp.css */
+/*Index Styles*/
+/* /Shared/MainLayout.razor.rz.scp.css */
+.page[b-7u1mxig4pb] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+main[b-7u1mxig4pb] {
+    flex: 1;
+}
+
+.sidebar[b-7u1mxig4pb] {
+    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+}
+
+.top-row[b-7u1mxig4pb] {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d6d5d5;
+    justify-content: flex-end;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+}
+
+    .top-row[b-7u1mxig4pb]  a, .top-row[b-7u1mxig4pb]  .btn-link {
+        white-space: nowrap;
+        margin-left: 1.5rem;
+        text-decoration: none;
+    }
+
+    .top-row[b-7u1mxig4pb]  a:hover, .top-row[b-7u1mxig4pb]  .btn-link:hover {
+        text-decoration: underline;
+    }
+
+    .top-row[b-7u1mxig4pb]  a:first-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+@media (max-width: 640.98px) {
+    .top-row:not(.auth)[b-7u1mxig4pb] {
+        display: none;
+    }
+
+    .top-row.auth[b-7u1mxig4pb] {
+        justify-content: space-between;
+    }
+
+    .top-row[b-7u1mxig4pb]  a, .top-row[b-7u1mxig4pb]  .btn-link {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 641px) {
+    .page[b-7u1mxig4pb] {
+        flex-direction: row;
+    }
+
+    .sidebar[b-7u1mxig4pb] {
+        width: 250px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .top-row[b-7u1mxig4pb] {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .top-row.auth[b-7u1mxig4pb]  a:first-child {
+        flex: 1;
+        text-align: right;
+        width: 0;
+    }
+
+    .top-row[b-7u1mxig4pb], article[b-7u1mxig4pb] {
+        padding-left: 2rem !important;
+        padding-right: 1.5rem !important;
+    }
+}
+/* /Shared/NavMenu.razor.rz.scp.css */
+.navbar-toggler[b-tshy0i4h7o] {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.top-row[b-tshy0i4h7o] {
+    height: 3.5rem;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.navbar-brand[b-tshy0i4h7o] {
+    font-size: 1.1rem;
+}
+
+.oi[b-tshy0i4h7o] {
+    width: 2rem;
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: -2px;
+}
+
+.nav-item[b-tshy0i4h7o] {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+    .nav-item:first-of-type[b-tshy0i4h7o] {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type[b-tshy0i4h7o] {
+        padding-bottom: 1rem;
+    }
+
+    .nav-item[b-tshy0i4h7o]  a {
+        color: #d7d7d7;
+        border-radius: 4px;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        line-height: 3rem;
+    }
+
+.nav-item[b-tshy0i4h7o]  a.active {
+    background-color: rgba(255,255,255,0.25);
+    color: white;
+}
+
+.nav-item[b-tshy0i4h7o]  a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
+
+@media (min-width: 641px) {
+    .navbar-toggler[b-tshy0i4h7o] {
+        display: none;
+    }
+
+    .collapse[b-tshy0i4h7o] {
+        /* Never collapse the sidebar for wide screens */
+        display: block;
+    }
+    
+    .nav-scrollable[b-tshy0i4h7o] {
+        /* Allow sidebar to scroll for tall menus */
+        height: calc(100vh - 3.5rem);
+        overflow-y: auto;
+    }
+}
