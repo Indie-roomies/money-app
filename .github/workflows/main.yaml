@@ -40,5 +40,4 @@ jobs:
       with:
         token: ${{ secrets.TOKEN }}
         branch: gh-pages
-        repository-name: Indie-roomies/money-app
         folder: release/wwwroot
