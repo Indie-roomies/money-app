@@ -29,7 +29,14 @@
 
 </div>
 @code {
-    private List<TaskModel> taks = new();
+    [Inject]
+    private ITaskService taskService { get; set; }
+
+    private List<TaskModel> taks;
+    protected override void OnInitialized()
+    {
+        taks = taskService.GetTasks();
+    }
     public string NameTask = String.Empty;
     public string DescTask = String.Empty;
     public bool State = false;
@@ -38,7 +45,7 @@
 
 
 
-        taks.Add(_task);
+        taskService.AddTask(_task);
 
    
 
