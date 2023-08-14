@@ -26,4 +26,10 @@
     <None Include=".github\workflows\main.yaml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="MoneyAppLib">
+      <HintPath>..\MoneyAppLib\bin\Debug\net7.0\MoneyAppLib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
