@@ -1,7 +1,14 @@
 ﻿@page "/test"
 @using MoneyAppLib
+@using MoneyAppLib.Components
 <h3>Test</h3>
 <Component1 Name="This is a parameter"></Component1>
+<MoneyAppLib.Components.TaxCard Id="1" NameExpense="Food" Value="@MyValue" OnClickEventCount="Count"></MoneyAppLib.Components.TaxCard>
 @code {
+    public int MyValue { get; set; }
 
+    public void Count(int value)
+    {
+       MyValue =+ value;
+    }
 }
