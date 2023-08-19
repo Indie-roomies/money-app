@@ -2,13 +2,35 @@
 @using MoneyAppLib
 @using MoneyAppLib.Components
 <h3>Test</h3>
-<Component1 Name="This is a parameter"></Component1>
+
+
+<button @onclick="OpenModal">Press me</button>
 <MoneyAppLib.Components.TaxCard Id="1" NameExpense="Food" Value="@MyValue" OnClickEventCount="Count"></MoneyAppLib.Components.TaxCard>
 @code {
+    public int CountVar { get; set; }
     public int MyValue { get; set; }
+
+    public bool Open    { get; set; }
+
+    public void Sum()
+    {
+        CountVar += 1;
+    }
 
     public void Count(int value)
     {
-       MyValue =+ value;
+        MyValue =+ value;
+    }
+
+    public void OpenModal()
+    {
+        if(Open)
+        {
+            Open = false;
+        }
+        else
+        {
+            Open = true;
+        }
     }
 }
